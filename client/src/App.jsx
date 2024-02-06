@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
+import './index.css'
 import { useState } from 'react'
 import React from 'react'
-import { BrowserRouter, Routes, Route, redirect } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import Login from "./desktopComponents/Login"
 import Register from "./desktopComponents/Register"
 import Home from "./desktopComponents/Home"
@@ -13,18 +14,13 @@ import LawyerDetail from "./desktopComponents/LawyerDetail"
 const App = () => {
 
   const [loggedIn, setLoggedIn] = useState(false)
+  // const [logiRegister, setLoginRegister] = useState('login');
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" render={() => (
-          loggedIn ? (
-            redirect("home")
-          ) : (
-            redirect("login")
-          )
-        )} />
-        <Route path="login" element={<Login />}></Route>
+        <Route path="/" element={<Navigate to={`${loggedIn ? '/home' : '/login'}`} />} />
+        <Route path="login" element={<Login loggedIn={loggedIn} />}></Route>
         <Route path="register" element={<Register />}></Route>
         <Route path="home" element={<Home />}></Route>
         <Route path="userInfo" element={<UserInfo />}></Route>
