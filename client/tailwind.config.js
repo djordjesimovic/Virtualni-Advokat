@@ -12,6 +12,9 @@ export default {
         'light-gray': '#F0F0F0',
         'black': '#151515',
         'white': '#FFFFFF'
+      },
+      backgroundImage: {
+        'userImage' : 'src/assets/user.png'
       }
     },
   },

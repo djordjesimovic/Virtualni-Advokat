@@ -17,3 +17,27 @@ html {
   margin: 0;
   padding: 0;
 }
+.user-image {
+  background-image: url('./assets/userDefault.png');
+  width: 70px;
+  height: 70px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #F0F0F0;
+  padding: 20px 20px;
+  border: 1px solid #f0f0f0;
+  border-radius: 50%;
+}
+.ui-datepicker.ui-widget-content {
+  background-color: '#F0F0F0';
+}
+.p-datepicker-header {
+  margin-bottom: 15px;
+  font-family: 'poppins';
+  font-size: 16px;
+  font-weight: bold;
+}
+.p-datepicker {
+  background-color: '#F0F0F0';
+}

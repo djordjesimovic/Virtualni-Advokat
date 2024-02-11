@@ -10,6 +10,8 @@ import UserInfo from "./desktopComponents/UserInfo"
 import UserFollow from './desktopComponents/UserFollow'
 import Search from "./desktopComponents/Search"
 import LawyerDetail from "./desktopComponents/LawyerDetail"
+import Navbar from './desktopComponents/Navbar'
+import { useNavigate } from 'react-router-dom';
 
 const App = () => {
 
@@ -19,8 +21,22 @@ const App = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  //State for logged user info
+  const[loggedUserInfo, setLoggedUserInfo] = useState([]);
+
+  //State for nav menu category
+  const [category, setCategory] = useState('home');
+
+
   return (
-    <BrowserRouter>
+    <div className='w-full h-full flex flex-row justify-start items-center'>
+      {/* {
+        localStorage.getItem('userLoggedIn') === 'true' ? <Navbar /> : null
+      } */}
+      <BrowserRouter>
+      {
+        localStorage.getItem('userLoggedIn') === 'true' ? <Navbar category={category} setCategory={setCategory} /> : null
+      }
       <Routes>
         <Route path="/" element={<Navigate to={`${localStorage.getItem('userLoggedIn') === 'true' ? '/home' : '/login'}`} />} />
         <Route path="login" 
@@ -47,13 +63,15 @@ const App = () => {
             />
          }>
         </Route>
-        <Route path="home" element={<Home />}></Route>
+        <Route path="home" element={<Home loggedUserInfo={loggedUserInfo} setLoggedUserInfo={setLoggedUserInfo} />}></Route>
         <Route path="userInfo" element={<UserInfo />}></Route>
         <Route path="userFollow" element={<UserFollow />}></Route>
         <Route path="search" element={<Search />}></Route>
         <Route path="lawyerInfo" element={<LawyerDetail />}></Route>
       </Routes>
     </BrowserRouter>
+    </div>
+    
   )
 }
 
